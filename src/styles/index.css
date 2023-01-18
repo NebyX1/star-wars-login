@@ -1,3 +1,35 @@
 /* 
     General Styles
 */
+.starIcon {
+    height: 70px;
+    width: auto;
+}
+
+.colorDropdown {
+    background-color: rgb(64, 11, 123) !important;
+}
+
+.dropdownFix {
+    height: 60px;
+    width: 140px;
+}
+
+.scrollable {
+    overflow-x: scroll;
+    max-height: 500px;
+    margin-top: 20px;
+}
+
+.containMe {
+    max-height: 400px;
+}
+
+.containMe2 {
+    max-height: 200px;
+}
+
+.card-img-top {
+    height: 200px;
+    width: 290px;
+}

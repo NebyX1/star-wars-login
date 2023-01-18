@@ -1,17 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
+import Icon from "../img/icon.png"
 
 export const Navbar = () => {
-	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
-			</div>
-		</nav>
-	);
+// const [getLike, getSetLike] = useEffect();
+
+// function buscarLike (){
+
+// }
+
+// useEffect(() => {
+//     buscarLike()
+//   },[])
+
+    return (
+        <nav className="navbar navbar-light bg-light mb-3 container">
+            <Link to="/">
+                <img src={Icon}
+                    alt=""
+                    className="starIcon"/>
+            </Link>
+            <div className="ml-auto">
+                <div className="dropdown">
+                    <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Favourites
+                    </button>
+                    <ul className="dropdown-menu">
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    );
 };
