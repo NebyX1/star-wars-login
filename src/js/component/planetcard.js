@@ -17,7 +17,7 @@ function PlanetCard(props) {
                 }
         }>
             
-            <img src={`https://starwars-visualguide.com/assets/img/planets/${props.id}.jpg`} className="card-img-top" alt="..."/>
+            <img src={props.id === "1" ? "https://static.wikia.nocookie.net/theclonewiki/images/b/b4/Tatooine-TCW.png" : `https://starwars-visualguide.com/assets/img/planets/${props.id}.jpg`} className="card-img-top" alt="..."/>
             <div className="card-body">
                 <h5 className="card-title">
                     {

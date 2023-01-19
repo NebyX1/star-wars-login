@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import {Context} from "../store/appContext";
 import PlanetInfo from "/workspace/react-hello-webapp/src/resourses/planetas.json";
 
-
-
 export const PlanetDescription = props => {
     const [id, setId] = useState("")
     const [infoPlanetas, setInfoPlanetas] = useState({});
@@ -33,7 +31,7 @@ console.log(params.id)
         <div className='container'>
             <div className='d-flex'>
             <div className='col-6 containMe me-2 text-center'>
-                <img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} height={"400px"} width={"auto"} alt="" />
+                <img src={posicion=== 0 ? "https://static.wikia.nocookie.net/theclonewiki/images/b/b4/Tatooine-TCW.png" : `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} height={"400px"} width={"auto"} alt="" />
             </div>
             <div className='col-6 containMe text-center ms-2'>
                 <h1 className='mt-3'>{infoPlanetas.properties?.name}</h1>
