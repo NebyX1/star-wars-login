@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import {Context} from "../store/appContext";
-
+import Characters from "/workspace/react-hello-webapp/src/resourses/personajes.json"
 
 
 export const CharacterDescription = props => {
@@ -21,7 +21,7 @@ export const CharacterDescription = props => {
     useEffect(() => {
         functCharacter(params.id)
     }, [])
-
+    let posicion = params.id -1;
     return (
         <div className='container'>
             <div className='d-flex'>
@@ -30,6 +30,9 @@ export const CharacterDescription = props => {
             </div>
             <div className='col-6 containMe text-center ms-2'>
                 <h1 className='mt-3'>{infoCharacter.properties?.name}</h1>
+                <p>
+                    {Characters[posicion].description}
+                </p>
             </div>
             </div>
             <div className='text-center'>

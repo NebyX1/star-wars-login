@@ -1,9 +1,17 @@
-import React, {useState ,useEffect} from "react";
+import React, { useEffect, useContext} from "react";
 import {BsFillHeartFill} from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 
 function PersonCard(props) {
+
+    const { store, actions } = useContext(Context);
+
+    useEffect(() => {
+    console.log(store.likesGuardados)
+        
+    }, [store.likesGuardados]);
 
     return (
         
@@ -28,10 +36,13 @@ function PersonCard(props) {
                             className="btn btn-primary">More Info!</Link>
                     </div>
                     <div className='col-6 d-flex justify-content-end'>
-                        <button className="btn btn-outline-warning">
+                        <button className="btn btn-outline-warning" onClick={() => store.likesGuardados.indexOf(props.characterName) !== -1 ? alert("Ya le diste like") : actions.giveMeLikes(props.characterName) }>
                             <BsFillHeartFill/>
                         </button>
                     </div>
+
+
+
                 </div>
             </div>
         </div>

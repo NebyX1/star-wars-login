@@ -1,29 +1,22 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			likesGuardados:[],
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			giveMeLikes: likes => {
+				const store = getStore();
+				setStore({ likesGuardados: [...store.likesGuardados,  likes ] });
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+			
+			dotLikeItAnymore: like => {
+				const store = getStore();
+				setStore({likesGuardados: store.likesGuardados.filter((elemento) => elemento !== like)})
+				console.log("hola")
 			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

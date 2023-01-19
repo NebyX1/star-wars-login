@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import {Context} from "../store/appContext";
+import PlanetInfo from "/workspace/react-hello-webapp/src/resourses/planetas.json";
 
 
 
@@ -25,6 +26,9 @@ export const PlanetDescription = props => {
 console.log(params.id)
     }, [])
 
+
+    let posicion = params.id -1;
+
     return (
         <div className='container'>
             <div className='d-flex'>
@@ -33,6 +37,7 @@ console.log(params.id)
             </div>
             <div className='col-6 containMe text-center ms-2'>
                 <h1 className='mt-3'>{infoPlanetas.properties?.name}</h1>
+                <p>{PlanetInfo[posicion].description}</p>
             </div>
             </div>
             <div className='text-center'>

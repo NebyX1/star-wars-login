@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import {BsFillHeartFill} from "react-icons/bs";
 import {Link} from "react-router-dom";
+import { Context } from "../store/appContext";
 
 
 function PlanetCard(props) {
+
+    const { store, actions } = useContext(Context);
+    
     return (
         <div className="card m-2"
             style={
@@ -26,7 +30,7 @@ function PlanetCard(props) {
                             className="btn btn-primary">More Info!</Link>
                     </div>
                     <div className='col-6 d-flex justify-content-end'>
-                        <button className="btn btn-outline-warning">
+                        <button className="btn btn-outline-warning" onClick={() => actions.giveMeLikes(props.planetName)}>
                             <BsFillHeartFill/>
                         </button>
                     </div>
