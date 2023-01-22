@@ -15,11 +15,11 @@ function PersonCard(props) {
 
     return (
         
-        <div className="card m-2"
+        <div className="card m-2 border-0"
             style={
                 {
                     minWidth: "300px",
-                    maxHeight: '350px'
+                    maxHeight: '1500px'
                 }
         }>
 

@@ -21,7 +21,7 @@ useEffect(() => {
         <h2 style={{color: "red"}}>Planets</h2>
       </div>
      
-      <div className="d-flex scrollable">
+      <div className="d-flex scrollable planetHeight">
       {planetName.map((planet)=>{return(<PlanetCard planetName={planet.name} key={planet.url} id={planet.uid} />)})}
       </div>
       

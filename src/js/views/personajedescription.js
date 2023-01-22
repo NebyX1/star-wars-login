@@ -25,12 +25,12 @@ export const CharacterDescription = props => {
     return (
         <div className='container'>
             <div className='d-flex'>
-            <div className='col-6 containMe me-2 text-center'>
-                <img src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} height={"400px"} width={"auto"} alt="" />
+            <div className='col-6 col-md-6 col-sm-6 containMe m-2 text-center'>
+                <img src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} className="imagSize" alt="" />
             </div>
-            <div className='col-6 containMe text-center ms-2'>
+            <div className='col-6 col-md-6 col-sm-6 containMe text-center m-2'>
                 <h1 className='mt-3'>{infoCharacter.properties?.name}</h1>
-                <p>
+                <p className='fontSizing'>
                     {Characters[posicion].description}
                 </p>
             </div>
@@ -38,22 +38,22 @@ export const CharacterDescription = props => {
             <div className='text-center'>
                 <hr className='mt-2 text-danger' style={{borderWidth: "2px"}} />
                 <div className='row d-flex'>
-                <div className='col-2 text-center'>
+                <div className='col-2 col-md-2 col-sm-2 text-center'>
                     <h4 className='text-danger'>Character Name</h4>
                     <h6 className='text-danger'>{infoCharacter.properties?.name}</h6></div>
-                <div className='col-2 text-center'>
+                <div className='col-2 col-md-2 col-sm-2 text-center'>
                     <h4 className='text-danger'>Eye Color</h4>
                     <h6 className='text-danger'>{infoCharacter.properties?.eye_color}</h6></div>
-                <div className='col-2 text-center'>
+                <div className='col-2 col-md-2 col-sm-2 text-center'>
                     <h4 className='text-danger'>Gender</h4>
                     <h6 className='text-danger'>{infoCharacter.properties?.gender}</h6></div>
-                <div className='col-2 text-center'>
+                <div className='col-2 col-md-2 col-sm-2 text-center'>
                     <h4 className='text-danger'>Hair Color</h4>
                     <h6 className='text-danger'>{infoCharacter.properties?.hair_color}</h6></div>
-                <div className='col-2 text-center'>
+                <div className='col-2 col-md-2 col-sm-2 text-center'>
                     <h4 className='text-danger'>Height</h4>
                     <h6 className='text-danger'>{infoCharacter.properties?.height}</h6></div>
-                <div className='col-2 text-center'>
+                <div className='col-2 col-md-2 col-sm-2 text-center'>
                     <h4 className='text-danger'>Skin Color</h4>
                     <h6 className='text-danger'>{infoCharacter.properties?.skin_color}</h6></div>
                 </div>

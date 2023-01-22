@@ -59,12 +59,12 @@ export const VehicleDescription = props => {
     return (
         <div className='container'>
             <div className='d-flex'>
-            <div className='col-6 containMe me-2 text-center'>
-                <img src={`https://starwars-visualguide.com/assets/img/vehicles/${id}.jpg`} height={"400px"} width={"auto"} alt="" />
+            <div className='col-6 col-md-6 col-sm-6 containMe me-2 text-center'>
+                <img src={`https://starwars-visualguide.com/assets/img/vehicles/${id}.jpg`} className="imagSize2" alt="" />
             </div>
-            <div className='col-6 containMe text-center ms-2'>
+            <div className='col-6 col-md-6 col-sm-6 containMe text-center ms-2'>
                 <h1 className='mt-3'>{infoVehicle.properties?.name}</h1>
-                <p>{VehicleInfo[indexJason].description}</p>
+                <p className='fontSizing'>{VehicleInfo[indexJason].description}</p>
             </div>
             </div>
             <div className='text-center'>

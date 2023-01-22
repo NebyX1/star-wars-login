@@ -30,12 +30,12 @@ console.log(params.id)
     return (
         <div className='container'>
             <div className='d-flex'>
-            <div className='col-6 containMe me-2 text-center'>
-                <img src={posicion=== 0 ? "https://static.wikia.nocookie.net/theclonewiki/images/b/b4/Tatooine-TCW.png" : `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} height={"400px"} width={"auto"} alt="" />
+            <div className='col-6 col-md-6 col-sm-6 containMe m-2 text-center'>
+                <img src={posicion=== 0 ? "https://static.wikia.nocookie.net/theclonewiki/images/b/b4/Tatooine-TCW.png" : `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} className="imagSize3" alt="" />
             </div>
-            <div className='col-6 containMe text-center ms-2'>
+            <div className='col-6 col-md-6 col-sm-6 containMe text-center m-2'>
                 <h1 className='mt-3'>{infoPlanetas.properties?.name}</h1>
-                <p>{PlanetInfo[posicion].description}</p>
+                <p className='fontSizing'>{PlanetInfo[posicion].description}</p>
             </div>
             </div>
             <div className='text-center'>

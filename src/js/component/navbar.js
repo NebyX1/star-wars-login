@@ -20,7 +20,7 @@ export const Navbar = () => {
 
 
     return (
-        <nav className="navbar navbar-light bg-light mb-3 container">
+        <nav className="navbar navbar-light bg-white mb-3 container sticky-top">
             <Link to="/">
                 <img src={Icon}
                     alt=""

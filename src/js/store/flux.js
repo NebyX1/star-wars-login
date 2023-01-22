@@ -2,9 +2,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			likesGuardados:[],
+			personajesGuardados:[],
 
 		},
 		actions: {
+			
+			buscarPersonajes: () => {
+				fetch("https://www.swapi.tech/api/people/")
+				.then(res => res.json())
+				.then(data => setStore({personajesGuardados: data.results}))
+				.catch(err => console.error(err))
+				},
+
 			// Use getActions to call a function within a fuction
 			giveMeLikes: likes => {
 				const store = getStore();

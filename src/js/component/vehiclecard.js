@@ -8,7 +8,7 @@ function VehicleCard(props) {
     const { store, actions } = useContext(Context);
 
     return (
-        <div className="card m-2"
+        <div className="card m-2 border-0"
             style={
                 {
                     minWidth: "300px",
@@ -29,7 +29,7 @@ function VehicleCard(props) {
                             className="btn btn-primary">More Info!</Link>
                     </div>
                     <div className='col-6 d-flex justify-content-end'>
-                        <button className="btn btn-outline-warning" onClick={() => actions.giveMeLikes(props.vehicleName)}>
+                        <button className="btn btn-outline-warning" onClick={() => store.likesGuardados.indexOf(props.vehicleName) !== -1 ? alert("Ya le diste like") : actions.giveMeLikes(props.vehicleName)}>
                             <BsFillHeartFill/>
                         </button>
                     </div>
