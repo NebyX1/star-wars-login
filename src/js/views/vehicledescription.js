@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import {Context} from "../store/appContext";
-import VehicleInfo from "/workspace/react-hello-webapp/src/resourses/vehicles.json";
+import VehicleInfo from "./resourses/vehicles.json";
 
 export const VehicleDescription = props => {
     const params = useParams();

@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import PlanetInfo from "/workspace/react-hello-webapp/src/resourses/planetas.json";
+import PlanetInfo from "./resourses/planetas.json";
 
 export const PlanetDescription = props => {
     const params = useParams();
