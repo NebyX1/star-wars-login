@@ -1,21 +1,9 @@
-import React, {useState,useEffect, useContext} from 'react'
+import React, { useContext } from 'react'
 import PersonajeCard from './personajecard'
 import {Context} from '../store/appContext';
 
 export default function Characters() {
-const [personName, setPersonName] = useState([])
-const {store, actions} = useContext(Context);
-
-function buscarPersonajes (){
-  fetch("https://www.swapi.tech/api/people/")
-.then(res => res.json())
-.then(data => setPersonName(data.results))
-.catch(err => console.error(err))
-}
-
-useEffect(() => {
- buscarPersonajes()
-},[])
+const {store} = useContext(Context);
 
   return (
     <div className='container mt-5'>
@@ -24,7 +12,7 @@ useEffect(() => {
       </div>
      
       <div className="d-flex scrollable charaSize">
-      {personName.map((personaje)=>{return(<PersonajeCard characterName={personaje.name} key={personaje.url} id={personaje.uid}/>)})}
+      {store.personajesGuardados.map((personaje)=>{return(<PersonajeCard characterName={personaje.name} key={personaje.url} id={personaje.uid}/>)})}
       </div>
       
     </div>

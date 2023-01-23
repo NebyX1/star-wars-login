@@ -1,19 +1,9 @@
-import React, {useState,useEffect} from 'react'
+import React, { useContext } from 'react'
 import PlanetCard from './planetcard'
+import {Context} from '../store/appContext';
 
 export default function Planetas() {
-const [planetName, setPlanetName] = useState([])
-
-function buscarPlanetas (){
-  fetch("https://www.swapi.tech/api/planets/")
-.then(res => res.json())
-.then(data => setPlanetName(data.results))
-.catch(err => console.error(err))
-}
-
-useEffect(() => {
-  buscarPlanetas()
-},[])
+  const {store} = useContext(Context);
 
   return (
     <div className='container mt-5'>
@@ -22,7 +12,7 @@ useEffect(() => {
       </div>
      
       <div className="d-flex scrollable planetHeight">
-      {planetName.map((planet)=>{return(<PlanetCard planetName={planet.name} key={planet.url} id={planet.uid} />)})}
+      {store.planetasguardados.map((planet)=>{return(<PlanetCard planetName={planet.name} key={planet.url} id={planet.uid} />)})}
       </div>
       
     </div>

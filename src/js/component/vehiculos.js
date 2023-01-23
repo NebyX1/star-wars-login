@@ -1,19 +1,10 @@
-import React, {useState,useEffect} from 'react'
-import VehicleCard from './vehiclecard'
+import React, { useContext } from 'react';
+import VehicleCard from './vehiclecard';
+import {Context} from '../store/appContext';
 
 export default function Vehiculos() {
-const [vehicleName, setVehicleName] = useState([])
 
-function buscarVehiculos (){
-  fetch("https://www.swapi.tech/api/vehicles/")
-.then(res => res.json())
-.then(data => setVehicleName(data.results))
-.catch(err => console.error(err))
-}
-
-useEffect(() => {
-  buscarVehiculos()
-},[])
+  const {store} = useContext(Context);
 
   return (
     <div className='container mt-5'>
@@ -22,7 +13,7 @@ useEffect(() => {
       </div>
      
       <div className="d-flex scrollable">
-      {vehicleName.map((vehicle)=>{return(<VehicleCard vehicleName={vehicle.name} key={vehicle.url} id={vehicle.uid}/>)})}
+      {store.vehiculosguardados.map((vehicle)=>{return(<VehicleCard vehicleName={vehicle.name} key={vehicle.url} id={vehicle.uid}/>)})}
       </div>
       
     </div>

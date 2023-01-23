@@ -1,26 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import {Context} from "../store/appContext";
 import VehicleInfo from "/workspace/react-hello-webapp/src/resourses/vehicles.json";
-import { parse } from 'query-string';
-
 
 export const VehicleDescription = props => {
-    const [id, setId] = useState("")
-    const [infoVehicle, setInfoVehicle] = useState({});
     const params = useParams();
-    
-    
-    function functVehicle(id) {
-        fetch("https://www.swapi.tech/api/vehicles/"+ id)
-		.then(res => res.json())
-		.then(data => setInfoVehicle(data.result))
-		.catch(err => console.error(err))
-        setId(id)
-    }
-
-      
+    const {store, actions} = useContext(Context);
+         
     function cambiadorIndex(){
         let numberLoko = 0;
         if (params.id==4) {
@@ -49,21 +36,19 @@ export const VehicleDescription = props => {
         }
 
         let indexJason = cambiadorIndex();
-        console.log(indexJason)
-        console.log(cambiadorIndex())
+
         useEffect(() => {
-            functVehicle(params.id)
-           
+            actions.functVehicle(params.id)      
         }, [])
 
     return (
         <div className='container'>
             <div className='d-flex'>
             <div className='col-6 col-md-6 col-sm-6 containMe me-2 text-center'>
-                <img src={`https://starwars-visualguide.com/assets/img/vehicles/${id}.jpg`} className="imagSize2" alt="" />
+                <img src={`https://starwars-visualguide.com/assets/img/vehicles/${params.id}.jpg`} className="imagSize2" alt="" />
             </div>
             <div className='col-6 col-md-6 col-sm-6 containMe text-center ms-2'>
-                <h1 className='mt-3'>{infoVehicle.properties?.name}</h1>
+                <h1 className='mt-3'>{store.viewVehicles.properties?.name}</h1>
                 <p className='fontSizing'>{VehicleInfo[indexJason].description}</p>
             </div>
             </div>
@@ -72,22 +57,22 @@ export const VehicleDescription = props => {
                 <div className='row d-flex'>
                 <div className='col-2 text-center'>
                     <h4 className='text-danger'>Character Name</h4>
-                    <h6 className='text-danger'>{infoVehicle.properties?.name}</h6></div>
+                    <h6 className='text-danger'>{store.viewVehicles.properties?.name}</h6></div>
                 <div className='col-2 text-center'>
                     <h4 className='text-danger'>Cargo Capacity</h4>
-                    <h6 className='text-danger'>{infoVehicle.properties?.cargo_capacity}</h6></div>
+                    <h6 className='text-danger'>{store.viewVehicles.properties?.cargo_capacity}</h6></div>
                 <div className='col-2 text-center'>
                     <h4 className='text-danger'>Consumables</h4>
-                    <h6 className='text-danger'>{infoVehicle.properties?.consumables}</h6></div>
+                    <h6 className='text-danger'>{store.viewVehicles.properties?.consumables}</h6></div>
                 <div className='col-2 text-center'>
                     <h4 className='text-danger'>Cost in Credits</h4>
-                    <h6 className='text-danger'>{infoVehicle.properties?.cost_in_credits}</h6></div>
+                    <h6 className='text-danger'>{store.viewVehicles.properties?.cost_in_credits}</h6></div>
                 <div className='col-2 text-center'>
                     <h4 className='text-danger'>Crew Capacity</h4>
-                    <h6 className='text-danger'>{infoVehicle.properties?.crew}</h6></div>
+                    <h6 className='text-danger'>{store.viewVehicles.properties?.crew}</h6></div>
                 <div className='col-2 text-center'>
                     <h4 className='text-danger'>Manufacturer</h4>
-                    <h6 className='text-danger'>{infoVehicle.properties?.manufacturer}</h6></div>
+                    <h6 className='text-danger'>{store.viewVehicles.properties?.manufacturer}</h6></div>
                 </div>
             </div>
         </div>

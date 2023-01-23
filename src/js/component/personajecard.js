@@ -1,4 +1,4 @@
-import React, { useEffect, useContext} from "react";
+import React, { useContext } from "react";
 import {BsFillHeartFill} from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -8,10 +8,6 @@ function PersonCard(props) {
 
     const { store, actions } = useContext(Context);
 
-    useEffect(() => {
-    console.log(store.likesGuardados)
-        
-    }, [store.likesGuardados]);
 
     return (
         
