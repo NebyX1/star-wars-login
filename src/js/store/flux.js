@@ -1,3 +1,8 @@
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
+
 const getState = ({getStore, setStore}) => {
     return {
         store: {
@@ -8,12 +13,86 @@ const getState = ({getStore, setStore}) => {
             vehiculosguardados: [],
             viewPersonajes: [],
             viewPlanets: [],
-            viewVehicles: []
+            viewVehicles: [],
+            auth: false
         },
         actions: {
 
             // Estas son las funciones que se encargan de traer desde la API los nombres de los
             // personajes en la pantalla principal
+
+
+
+            // Acá empieza el fetch que nos permite conectar con el BackEnd
+
+            login: (userEmail, userPassword) => {
+                fetch('https://3000-nebyx1-practicesqlalche-m5mkx04fv5s.ws-us84.gitpod.io/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            "email": userEmail,
+                            "password": userPassword
+                        }) // body data type must match "Content-Type" header
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        if (response.status === 200) {
+                            setStore({
+                                auth: true
+                            })
+                        }
+                        return response.json()
+                    })
+                    .catch((err) => {console.log(err);Swal.fire({
+                        title: 'Error!',
+                        text: 'Tenés la contraseña o el mail mal ingresado',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    })})
+            },
+
+            // Acá termina el fetch que nos permite conectar con el BackEnd
+
+            // Acá está la función de crear un nuevo usuario
+            register: (userEmail, userName, userPassword) => {
+                fetch('https://3000-nebyx1-practicesqlalche-m5mkx04fv5s.ws-us84.gitpod.io/user', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            "email": userEmail,
+                            "user_name": userName,
+                            "password": userPassword
+                        })
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        if (response.status === 200) {
+                            setStore({
+                                auth: true
+                            })
+                        }
+                        return response.json()
+                    })
+                    .catch((err) => console.log(err))
+            },
+
+
+
+
+// Acá empieza la Función que permite hacer el Logout
+logout: () => {
+    localStorage.removeItem('token');
+    setStore({
+        auth: false
+    })
+},
+// Acá termina la función de logout
+
 
             buscarPersonajes: () => {
                 fetch("https://www.swapi.tech/api/people/").then(res => res.json()).then(data => setStore({personajesGuardados: data.results})).catch(err => console.error(err))
@@ -69,7 +148,7 @@ const getState = ({getStore, setStore}) => {
             },
 
 
-			//Esto no es significativo
+            // Esto no es significativo
             changeColor: (index, color) => { // get the store
                 const store = getStore();
 
@@ -79,6 +158,7 @@ const getState = ({getStore, setStore}) => {
                     if (i === index) 
                         elm.background = color;
                     
+
 
                     return elm;
                 });

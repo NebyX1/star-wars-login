@@ -12,6 +12,8 @@ import { Footer } from "./component/footer";
 import { CharacterDescription } from "./views/personajedescription.js";
 import { VehicleDescription } from "./views/vehicledescription.js";
 import { PlanetDescription } from "./views/planetdescription.js";
+import { LoginForm } from "./views/login"
+import { Register } from "./views/register";
 
 //create your first component
 const Layout = () => {
@@ -27,6 +29,8 @@ const Layout = () => {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/demo" element={<Demo />} />
+						<Route path="/login" element={<LoginForm />} />
+						<Route path="/register" element={<Register />} />
 						<Route path="/single/:theid" element={<Single />} />
 						<Route path="/personaje/detalles/:id" element={<CharacterDescription />} />
 						<Route path="/planeta/detalles/:id" element={<PlanetDescription />} />
